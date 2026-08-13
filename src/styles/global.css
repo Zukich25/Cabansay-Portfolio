@@ -1,0 +1,129 @@
+@import "tailwindcss";
+
+:root {
+  --page-bg: #1c1c22;
+  --card-bg: #232329;
+  --input-bg: #2a2a31;
+  --fg: #ffffff;
+  --muted: #9ca3af;
+  --border: #374151;
+  --accent: #00ff99;
+  --accent-fg: #1c1c22;
+}
+
+html.light {
+  --page-bg: #f4f6f8;
+  --card-bg: #ffffff;
+  --input-bg: #eef1f5;
+  --fg: #1c1c22;
+  --muted: #6b7280;
+  --border: #e5e7eb;
+  --accent: #00b368;
+  --accent-fg: #ffffff;
+}
+
+@theme {
+  --color-page: var(--page-bg);
+  --color-card: var(--card-bg);
+  --color-input: var(--input-bg);
+  --color-fg: var(--fg);
+  --color-muted: var(--muted);
+  --color-border: var(--border);
+  --color-accent: var(--accent);
+  --color-accent-fg: var(--accent-fg);
+  --font-sans: "Outfit", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+body {
+  background-color: var(--page-bg);
+  color: var(--fg);
+  font-family: var(--font-sans);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.font-display {
+  font-family: var(--font-sans);
+}
+
+.font-mono {
+  font-family: var(--font-mono);
+}
+
+.input-field {
+  @apply w-full bg-input border border-border rounded-lg px-4 py-3 text-fg placeholder:text-muted/60 focus:outline-none focus:border-accent focus:ring-2 focus:ring-accent/20 transition-all duration-200;
+}
+
+.page-enter {
+  animation: page-enter 0.45s ease-out forwards;
+}
+
+@keyframes page-enter {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes spin-slow {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-fade-in {
+  animation: fade-in 0.7s ease-out forwards;
+}
+
+.animate-fade-in-delay {
+  opacity: 0;
+  animation: fade-in 0.7s ease-out 0.2s forwards;
+}
+
+.animate-fade-in-delay-2 {
+  opacity: 0;
+  animation: fade-in 0.7s ease-out 0.4s forwards;
+}
+
+.animate-spin-slow {
+  animation: spin-slow 25s linear infinite;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--page-bg);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent);
+}
